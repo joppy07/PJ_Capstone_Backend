@@ -1,0 +1,29 @@
+[
+    {
+      "_id": { "$oid": "6458f2660370b02a293447b0" },
+      "title": "Signature Shirt",
+      "thumbnail": "cricket-shirt.jpeg",
+      "slug": "sig-shirt",
+      "description": "Our Signature Shirt",
+      "stars": "5",
+      "category": ["clothing", "men"]
+    },
+    {
+      "_id": { "$oid": "6458f2c50370b02a2934d5fc" },
+      "title": "Bat",
+      "thumbnail": "cricket-bat.jpg",
+      "slug": "the-bat",
+      "description": "Classical bat. ",
+      "stars": "5",
+      "category": ["bat", "equipment"]
+    },
+    {
+      "_id": { "$oid": "648ada707a15f23fa4ba9aa5" },
+      "title": "Ball",
+      "thumbnail": "cricket-ball.jpg",
+      "slug": "cric-ball",
+      "description": "Cricket Ball.",
+      "stars": "4",
+      "category": ["ball", "equipment"]
+    }
+  ]  

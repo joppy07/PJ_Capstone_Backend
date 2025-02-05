@@ -35,7 +35,7 @@ app.get("/api/products", async (req, res) => {
     
     res.status(201).json(data);
   } catch (error) {
-    res.status(500).json({ error: "An error occurred while fetching books." });
+    res.status(500).json({ error: "An error occurred while fetching products." });
   }
 });
 
@@ -50,7 +50,7 @@ app.get("/api/products/:slug", async (req, res) => {
     
     res.status(201).json(data);
   } catch (error) {
-    res.status(500).json({ error: "An error occurred while fetching books." });
+    res.status(500).json({ error: "An error occurred while fetching products." });
   }
 });
 
@@ -84,10 +84,45 @@ app.post("/api/products", upload.single("thumbnail")  ,async (req, res) => {
     await Product.create(newProduct);
     res.json("Data Submitted");
   } catch (error) {
-    res.status(500).json({ error: "An error occurred while fetching books." });
+    res.status(500).json({ error: "An error occurred while fetching products." });
   }
 });
 
+app.put("/api/products", upload.single("thumbnail"), async (req, res) => {
+  try {
+
+    const productId = req.body.productId;
+
+    const updateProduct = {
+      title: req.body.title,
+      slug: req.body.slug,
+      stars: req.body.stars,
+      description: req.body.description,
+      category: req.body.category,
+    }
+
+    if (req.file) {
+      updateProduct.thumbnail = req.file.filename;
+    }
+
+    await Product.findByIdAndUpdate(bookId, updateProduct)
+    res.json("Data Submitted");
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred while fetching products." });
+  }
+});
+
+
+app.delete("/api/products/:id", async(req,res) => {
+  const productId = req.params.id;
+
+  try {
+    await Product.deleteOne({_id: productId});
+    res.json("Kindly confirm that you authorize product removal!" + req.body.productId);
+  } catch (error) {
+    res.json(error);
+  }
+});
 
 
 app.get("*", (req, res) => {
